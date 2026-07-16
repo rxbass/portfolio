@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jothi Basu S - Technical Manager | AI Strategy & Delivery | Building AI systems — RAG pipelines, Agentic AI, Vision LLM | Chennai</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0A0F1E;
+    --surface: #111827;
+    --surface2: #1a2235;
+    --border: #1e2d47;
+    --accent: #3B82F6;
+    --accent2: #06B6D4;
+    --accent3: #8B5CF6;
+    --text: #E2E8F0;
+    --text-muted: #64748B;
+    --text-dim: #94A3B8;
+    --green: #10B981;
+    --yellow: #F59E0B;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 15, 30, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-brand {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    padding: 5rem 2rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  h1 span {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    max-width: 580px;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.8rem;
+    border-radius: 100px;
+  }
+
+  .meta-pill .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+
+  .btn-primary:hover { background: #2563EB; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
+
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+  }
+
+  .stats-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  .stat-num {
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: var(--mono);
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+  }
+
+  /* AI PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .project-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .project-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .project-card p {
+    font-size: 0.83rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .stack-item {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    background: var(--surface2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  /* EXPERIENCE TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: 2.5rem;
+  }
+
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -1.5rem;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translateX(-3.5px);
+    border: 2px solid var(--bg);
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .timeline-company {
+    font-size: 0.83rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .timeline-date {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .timeline-desc {
+    font-size: 0.83rem;
+    color: var(--text-dim);
+    line-height: 1.65;
+  }
+
+  .timeline-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.7rem;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .badge-blue { background: rgba(59,130,246,0.12); color: #93C5FD; border: 1px solid rgba(59,130,246,0.2); }
+  .badge-green { background: rgba(16,185,129,0.12); color: #6EE7B7; border: 1px solid rgba(16,185,129,0.2); }
+  .badge-purple { background: rgba(139,92,246,0.12); color: #C4B5FD; border: 1px solid rgba(139,92,246,0.2); }
+  .badge-yellow { background: rgba(245,158,11,0.12); color: #FCD34D; border: 1px solid rgba(245,158,11,0.2); }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem;
+  }
+
+  .skill-group-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    font-family: var(--mono);
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .skill-tag {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 0.25rem 0.55rem;
+    border-radius: 4px;
+  }
+
+  /* AWARDS */
+  .awards-list {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .award-item {
+    display: flex;
+    gap: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    align-items: flex-start;
+  }
+
+  .award-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .award-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .award-desc {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+    display: block;
+  }
+
+  .contact-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .contact-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
+    font-family: var(--mono);
+  }
+
+  .contact-value {
+    font-size: 0.88rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-family: var(--mono);
+  }
+
+  @media (max-width: 640px) {
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">jothibasu.s</div>
+  <ul class="nav-links">
+    <li><a href="#ai-projects">AI Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Technical Manager & AI Systems Builder</div>
+  <h1>Jothi Basu S<br><span>AI Strategy + Delivery.</span></h1>
+  <p class="hero-sub">
+    16 years of engineering leadership meets hands-on AI systems work. I build and lead teams that ship from enterprise CRM platforms to LangChain agents, RAG pipelines, and Vision LLM systems.
+  </p>
+  <div class="hero-meta">
+    <div class="meta-pill"><span class="dot"></span> Available for new opportunities</div>
+    <div class="meta-pill">📍 Chennai, Tamil Nadu</div>
+    <div class="meta-pill">⚙️ Technical Manager · AI Delivery</div>
+  </div>
+  <div class="hero-cta">
+    <a href="mailto:sbasu.cse@gmail.com" class="btn btn-primary">✉ Get in Touch</a>
+    <a href="https://linkedin.com/in/jothibasus" class="btn btn-ghost" target="_blank">LinkedIn →</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">16</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">95%</div>
+      <div class="stat-label">On-Time Delivery</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">11</div>
+      <div class="stat-label">Engineers Led</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4+</div>
+      <div class="stat-label">AI Systems Built</div>
+    </div>
+  </div>
+</div>
+
+<!-- AI PROJECTS -->
+<section id="ai-projects">
+  <div class="section-label">AI & Applied ML</div>
+  <h2>Systems I've Built</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-tag">⚡ Agentic AI</div>
+      <h3>Sales Intelligence Agent</h3>
+      <p>LangChain ReAct agent for CRM lead enrichment. Autonomously scores opportunities, generates 90-day revenue forecasts, and produces next-best-action recommendations with risk flags.</p>
+      <div class="project-stack">
+        <span class="stack-item">Python</span>
+        <span class="stack-item">LangChain</span>
+        <span class="stack-item">OpenAI</span>
+        <span class="stack-item">ReAct</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">🔍 RAG Pipeline</div>
+      <h3>Contract Document Intelligence</h3>
+      <p>Semantic search and natural language Q&A over unstructured contracts. 500-token chunking with overlap, FAISS vector store, top-3 similarity retrieval, LLM response generation.</p>
+      <div class="project-stack">
+        <span class="stack-item">Python</span>
+        <span class="stack-item">FAISS</span>
+        <span class="stack-item">OpenAI Embeddings</span>
+        <span class="stack-item">Streamlit</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">👁 Vision LLM</div>
+      <h3>Fynko — Payment Verification</h3>
+      <p>Vision AI extracts transaction details from payment screenshots. Multi-factor fraud scoring: duplicate detection, payee mismatch validation, cross-customer screenshot reuse via image hashing.</p>
+      <div class="project-stack">
+        <span class="stack-item">PHP</span>
+        <span class="stack-item">GPT-4 Vision</span>
+        <span class="stack-item">Laravel</span>
+        <span class="stack-item">Fraud Scoring</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">🏠 Local AI</div>
+      <h3>ZORO — Privacy-First Assistant</h3>
+      <p>Fully offline family AI assistant with isolated per-user vector memory. Four isolated ChromaDB collections for complete privacy separation. Runs entirely on local hardware — no cloud dependency.</p>
+      <div class="project-stack">
+        <span class="stack-item">FastAPI</span>
+        <span class="stack-item">ChromaDB</span>
+        <span class="stack-item">APScheduler</span>
+        <span class="stack-item">Flutter</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career</div>
+  <h2>Experience</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-header">
+        <div>
+          <div class="timeline-title">Technical Manager</div>
+          <div class="timeline-company">TechAffinity Global Pvt Ltd</div>
+        </div>
+        <div class="timeline-date">Jul 2022 — Present</div>
+      </div>
+      <p class="timeline-desc">Lead engineering teams building and operating production backend systems for global clients. Own architectural decisions, sprint planning, and delivery commitments. Led end-to-end delivery of Airline Management Platform (GDS/IATA standards). Guided MySQL to AWS Aurora cloud migration. Established CI/CD pipelines with GitLab CI and SonarQube. Improved customer retention by 22%.</p>
+      <div class="timeline-badges">
+        <span class="badge badge-blue">Architecture Ownership</span>
+        <span class="badge badge-green">AWS Aurora Migration</span>
+        <span class="badge badge-purple">CI/CD Pipelines</span>
+        <span class="badge badge-yellow">22% Retention Improvement</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-header">
+        <div>
+          <div class="timeline-title">Associate Manager</div>
+          <div class="timeline-company">TechAffinity Global Pvt Ltd</div>
+        </div>
+        <div class="timeline-date">Nov 2020 — Jun 2022</div>
+      </div>
+      <p class="timeline-desc">Managed delivery across multiple engineering teams of up to 11 engineers. Owned sprint execution, delivery tracking, and stakeholder communication. Improved delivery predictability and stakeholder satisfaction by 25%.</p>
+      <div class="timeline-badges">
+        <span class="badge badge-blue">11 Engineers Led</span>
+        <span class="badge badge-green">25% Satisfaction Improvement</span>
+        <span class="badge badge-purple">Pre-Sales Support</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-header">
+        <div>
+          <div class="timeline-title">Team Lead / Associate Team Lead</div>
+          <div class="timeline-company">TechAffinity Global Pvt Ltd</div>
+        </div>
+        <div class="timeline-date">Apr 2016 — Oct 2020</div>
+      </div>
+      <p class="timeline-desc">Led multiple concurrent projects with 95% on-time delivery. Modernized legacy systems improving performance and stability by 35%. Designed and implemented REST APIs and CRM integrations.</p>
+      <div class="timeline-badges">
+        <span class="badge badge-green">95% On-Time Delivery</span>
+        <span class="badge badge-blue">REST APIs & CRM</span>
+        <span class="badge badge-yellow">35% Performance Improvement</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-header">
+        <div>
+          <div class="timeline-title">Senior Software Engineer / Software Engineer</div>
+          <div class="timeline-company">TechAffinity · X-Value Technologies · Photon Infotech</div>
+        </div>
+        <div class="timeline-date">Jun 2010 — Mar 2016</div>
+      </div>
+      <p class="timeline-desc">Built and deployed scalable web applications and backend services. Designed REST APIs, payment integrations, and cloud-hosted systems. Contributed to DevOps practices including deployments and monitoring.</p>
+      <div class="timeline-badges">
+        <span class="badge badge-blue">Backend Engineering</span>
+        <span class="badge badge-purple">Payment Integrations</span>
+        <span class="badge badge-green">DevOps Practices</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <h2>Skills</h2>
+  <div class="skills-grid">
+
+    <div class="skill-group">
+      <div class="skill-group-title">AI / LLM Systems</div>
+      <div class="skill-tags">
+        <span class="skill-tag">RAG Pipelines</span>
+        <span class="skill-tag">Agentic AI</span>
+        <span class="skill-tag">LangChain ReAct</span>
+        <span class="skill-tag">Prompt Engineering</span>
+        <span class="skill-tag">ChromaDB</span>
+        <span class="skill-tag">FAISS</span>
+        <span class="skill-tag">Embeddings</span>
+        <span class="skill-tag">OpenAI API</span>
+        <span class="skill-tag">Vision LLM</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Languages & Frameworks</div>
+      <div class="skill-tags">
+        <span class="skill-tag">PHP / Laravel</span>
+        <span class="skill-tag">Python / FastAPI</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Vue.js</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">Streamlit</span>
+        <span class="skill-tag">Flutter</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Architecture</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Microservices</span>
+        <span class="skill-tag">Headless Systems</span>
+        <span class="skill-tag">Event-Driven</span>
+        <span class="skill-tag">System Design</span>
+        <span class="skill-tag">Design Patterns</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Cloud & DevOps</div>
+      <div class="skill-tags">
+        <span class="skill-tag">AWS Aurora</span>
+        <span class="skill-tag">GitLab CI</span>
+        <span class="skill-tag">SonarQube</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">CI/CD</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Databases</div>
+      <div class="skill-tags">
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">AWS Aurora</span>
+        <span class="skill-tag">MariaDB</span>
+        <span class="skill-tag">MSSQL</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">ChromaDB</span>
+        <span class="skill-tag">FAISS</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Leadership</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Team Management</span>
+        <span class="skill-tag">Agile / Scrum</span>
+        <span class="skill-tag">Pre-Sales</span>
+        <span class="skill-tag">Mentorship</span>
+        <span class="skill-tag">Sprint Planning</span>
+        <span class="skill-tag">Stakeholder Mgmt</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section>
+  <div class="section-label">Recognition</div>
+  <h2>Awards</h2>
+  <div class="awards-list">
+    <div class="award-item">
+      <div class="award-icon">🤖</div>
+      <div>
+        <div class="award-title">AI Implementation Award</div>
+        <div class="award-desc">Advised integration of Agentic AI for Lead Enrichment, Opportunity Scoring and Sales Forecasting — resulting in 15% improvement in sales forecasting speed.</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <div class="award-icon">🏆</div>
+      <div>
+        <div class="award-title">Above and Beyond Award — Dec 2017</div>
+        <div class="award-desc">Recognized for consistently exceeding delivery expectations by taking proactive ownership of complex technical challenges across multiple client projects.</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <div class="award-icon">⭐</div>
+      <div>
+        <div class="award-title">Best Adaptability Award — Aug 2016</div>
+        <div class="award-desc">Recognized for exceptional flexibility and ownership in managing multiple complex client projects simultaneously with on-time delivery.</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <div class="award-icon">💡</div>
+      <div>
+        <div class="award-title">Product Enhancement Strategy</div>
+        <div class="award-desc">Proposed an alternative architecture for an HRIS SaaS product that played a critical role in increasing client onboarding velocity.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2>Contact</h2>
+  <div class="contact-grid">
+    <a href="mailto:sbasu.cse@gmail.com" class="contact-card">
+      <div class="contact-label">Email</div>
+      <div class="contact-value">sbasu.cse@gmail.com</div>
+    </a>
+    <a href="tel:+919500182664" class="contact-card">
+      <div class="contact-label">Phone</div>
+      <div class="contact-value">+91 9500182664</div>
+    </a>
+    <a href="https://linkedin.com/in/jothibasus" target="_blank" class="contact-card">
+      <div class="contact-label">LinkedIn</div>
+      <div class="contact-value">linkedin.com/in/jothibasus</div>
+    </a>
+    <a href="https://github.com/rxbass?tab=repositories" target="_blank" class="contact-card">
+      <div class="contact-label">GitHub</div>
+      <div class="contact-value">github.com/rxbass</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  Jothi Basu S · Technical Manager & AI Systems · Chennai, Tamil Nadu · 2026
+</footer>
+
+</body>
+</html>
